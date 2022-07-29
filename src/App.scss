@@ -1,0 +1,330 @@
+.app {
+  background-color: #0d2960;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100wh;
+  height: 100vh;
+
+  &__title {
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    color: #0d2960;
+    margin-bottom: 20px;
+  }
+}
+
+.container {
+  background: #fcfcfc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 32px 126px 64px;
+  transition: all 0.2s;
+
+  @media only screen and (max-width: 768px) {
+    padding: 32px 84px 60px;
+  }
+  @media only screen and (max-width: 640px) {
+    padding: 20px 14px 36px;
+    margin: 0 1rem;
+  }
+}
+
+.add-todo {
+  &-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.button {
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  border-radius: 0.125em;
+  padding: 0.375em 1.25em;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25em;
+  cursor: pointer;
+  height: 32px;
+  text-decoration: none;
+  position: relative;
+  min-width: 80px;
+  box-sizing: border-box;
+
+  &--disabled {
+    background: #f3f2f1;
+    color: #a19f9d;
+    border: 1px solid #f3f2f1;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--enabled {
+    color: #fff;
+    background: #0078d4;
+    border: 1px solid #0078d4;
+  }
+}
+
+.basic-input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  outline: 0;
+  padding: 0 0.5rem;
+  margin: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  background: none transparent;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #323130;
+  text-overflow: ellipsis;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  &.form-input {
+    max-width: 300px;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 2rem;
+    margin: 0;
+    padding: 0 0.5rem;
+    box-shadow: none;
+    border-radius: 0.125rem;
+    border: 0.0625rem solid #605e5c;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: text;
+
+    & + .button {
+      margin-left: 8px;
+    }
+  }
+}
+
+.todo {
+  &__item {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: fit-content;
+    min-height: 5rem;
+    padding: 1rem;
+    border-bottom: 0.0625rem solid #edebe9;
+    box-sizing: border-box;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0.0625rem solid #edebe9;
+    overflow-y: auto;
+    max-height: 30rem;
+
+    &--empty {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 3rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &__delete {
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+  }
+}
+
+.item {
+  &__date {
+    margin-top: 0.25rem;
+    margin-left: 1.75rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: #8a8886;
+    white-space: nowrap;
+  }
+
+  &__control {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 146%;
+    color: #201f1e;
+    margin: 0 0 0 0.25rem;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    border: 0.0625rem solid #323130;
+    border-radius: 0.125rem;
+    margin: 0 0.25rem 0 0;
+    box-sizing: border-box;
+    transition-property: background, border, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.23, 1);
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      border-color: #005a9e;
+      background-color: #005a9e;
+    }
+  }
+}
+
+.tab {
+  outline: transparent;
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-sizing: border-box;
+  border: 0;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border-radius: 0;
+  height: 2.75rem;
+  color: #323130;
+  background-color: transparent;
+  line-height: 2.75rem;
+  margin-right: 0.5rem;
+  user-select: none;
+  cursor: pointer;
+  text-transform: capitalize;
+
+  &::after {
+    background-color: transparent;
+    bottom: 0;
+    content: "";
+    height: 0.125rem;
+    left: 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+  }
+
+  &--selected {
+    outline: transparent;
+    position: relative;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-sizing: border-box;
+    border: 0;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    border-radius: 0;
+    height: 2.75rem;
+    color: #323130;
+    background-color: transparent;
+    line-height: 2.75rem;
+    margin-right: 0.5rem;
+    user-select: none;
+
+    &::after {
+      background-color: #0078d4;
+    }
+  }
+}
+
+.filter-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0.875rem;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  & .items {
+    &-left {
+      font-family: "Segoe UI";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 32px;
+      color: #201f1e;
+      cursor: default;
+    }
+
+    &-clear {
+      font-family: "Segoe UI";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 32px;
+      color: #201f1e;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
